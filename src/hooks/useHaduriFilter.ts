@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
+import { filterOptionsProps } from '@types';
 
 const useHaduriFilter = () => {
   const [image, setImage] = useState<File | null>(null);
   const [compressedImage, setCompressedImage] = useState<Blob | null>(null);
-  const [resolution, setResolution] = useState<number>(0.14);
-  const [selectedFilter, setSelectedFilter] = useState<number>(1);
+  const [filterOptions, setFilterOptions] = useState<filterOptionsProps>({
+    filterStyle: '',
+    resolution: 0.14,
+    isUseWaterMark: true,
+  });
 
   const compressImage = (image: File, resolution: number) => {
     const img = new Image();
@@ -47,24 +51,26 @@ const useHaduriFilter = () => {
 
   const handleFilterImage = () => {
     if (image) {
-      compressImage(image, resolution)
+      compressImage(image, filterOptions.resolution)
         .then(setCompressedImage)
         .catch(e => console.log(e));
     }
   };
 
   const handleResolutionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setResolution(parseFloat(e.target.value));
+    setFilterOptions({
+      ...filterOptions,
+      resolution: parseFloat(e.target.value),
+    });
   };
 
-  useEffect(handleFilterImage, [image, resolution]);
+  useEffect(handleFilterImage, [image, filterOptions.resolution]);
 
   return {
     setImage,
     compressedImage,
-    resolution,
-    selectedFilter,
-    setSelectedFilter,
+    filterOptions,
+    setFilterOptions,
     handleResolutionChange,
   };
 };

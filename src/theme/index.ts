@@ -6,7 +6,7 @@ export const theme = extendTheme({
       body: {
         fontFamily:
           '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif',
-          backgroundColor : 'brand.50'
+        backgroundColor: 'brand.50',
       },
     },
   },
@@ -22,6 +22,9 @@ export const theme = extendTheme({
       700: '#9C4221',
       800: '#7B341E',
       900: '#652B19',
+    },
+    options: {
+      100: '#E2E8F0',
     },
   },
   fontSizes: {

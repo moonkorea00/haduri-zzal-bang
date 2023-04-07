@@ -4,7 +4,7 @@ import { INSTRUCTIONS_DATA } from './instructions.utils';
 const Instructions = () => {
   return (
     <Flex direction="column">
-      <Box>
+      <Box mb="6px">
         <Button as="h2" fontSize="xl" fontWeight="600">
           필터 / 화질 선택
         </Button>

@@ -10,19 +10,19 @@ const HaduriFilterView = () => {
   const {
     setImage,
     compressedImage,
-    resolution,
-    selectedFilter,
-    setSelectedFilter,
+    filterOptions,
+    setFilterOptions,
     handleResolutionChange,
   } = useHaduriFilter();
 
   return (
     <Flex as="main" direction="column" gap="16px" p="10px" m="16px">
       {compressedImage && (
-        <Flex as="section">
+        <Flex as="section" justifyContent="space-around">
           <Instructions />
           <DefaultFilterOptions
-            resolution={resolution}
+            filterOptions={filterOptions}
+            setFilterOptions={setFilterOptions}
             handleResolutionChange={handleResolutionChange}
           />
         </Flex>
@@ -41,11 +41,10 @@ const HaduriFilterView = () => {
           {FILTER_OPTIONS.map(({ id, style, name }) => (
             <FilterCard
               key={id}
-              id={id}
               style={style}
               name={name}
-              selectedFilter={selectedFilter}
-              setSelectedFilter={setSelectedFilter}
+              filterOptions={filterOptions}
+              setFilterOptions={setFilterOptions}
               compressedImage={compressedImage}
             />
           ))}
