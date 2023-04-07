@@ -1,4 +1,5 @@
 import { Flex } from '@chakra-ui/react';
+import Link from 'next/link';
 
 const Header = () => {
   return (
@@ -14,7 +15,7 @@ const Header = () => {
       fontSize="6xl"
       fontWeight="900"
     >
-      하두리 짤 만들기 ㅋ
+      <Link href="/">하두리 짤 만들기 ㅋ</Link>
     </Flex>
   );
 };
