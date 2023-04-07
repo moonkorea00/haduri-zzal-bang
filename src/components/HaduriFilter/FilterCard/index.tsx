@@ -46,12 +46,12 @@ const FilterCard = ({
         <NextImage
           src="/haduri.svg"
           alt="하두리"
-          width={80}
+          width={filterOptions?.isLargeMode ? 160 : 80}
           height={50}
           style={{
             position: 'absolute',
-            top: '4px',
-            left: '4px',
+            top: `${filterOptions?.isLargeMode ? '10px' : '6px'}`,
+            left: `${filterOptions?.isLargeMode ? '10px' : '6px'}`,
           }}
         />
       )}
