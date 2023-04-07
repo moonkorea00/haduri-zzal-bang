@@ -20,12 +20,15 @@ const FilterCard = ({
   setFilterOptions,
   compressedImage,
 }: FilterCard) => {
-  
   return (
     <Box
       pos="relative"
       p="4px"
-      border={filterOptions?.filterStyle === style?.filter ? '2px solid orange' : 'none'}
+      border={
+        filterOptions?.filterStyle === style?.filter
+          ? '2px solid orange'
+          : 'none'
+      }
       borderRadius="8px"
       sx={{ cursor: 'pointer' }}
       onClick={() =>
@@ -35,7 +38,7 @@ const FilterCard = ({
       <NextImage
         src={URL.createObjectURL(compressedImage)}
         alt="하두리"
-        width={200}
+        width={filterOptions?.isLargeMode ? 500 : 200}
         height={100}
         style={style}
       />

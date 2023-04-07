@@ -1,12 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
-import {
-  Flex,
-  Text,
-  FormControl,
-  FormLabel,
-  Switch,
-} from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import Range from '../Range';
+import Switch from '../Switch';
 import { filterOptionsProps } from '@types';
 
 type DefaultFilterOptionsProps = {
@@ -20,12 +15,11 @@ const DefaultFilterOptions = ({
   setFilterOptions,
   handleResolutionChange,
 }: DefaultFilterOptionsProps) => {
-
   return (
     <Flex>
       <Flex direction="column" gap="4px">
         <Flex justifyContent="space-between">
-          <Text as="span" fontSize="lg" fontWeight="600">
+          <Text as="span" fontSize="md" fontWeight="600">
             화질
           </Text>
           <Text as="span" ml="16px">
@@ -40,34 +34,20 @@ const DefaultFilterOptions = ({
           handleChange={handleResolutionChange}
           width={400}
         />
-        <FormControl
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-          mt="6px"
-        >
-          <FormLabel
-            as="span"
-            htmlFor="isChecked"
-            fontSize="lg"
-            fontWeight="600"
-            mb="0"
-          >
-            하두리 배너 사용
-          </FormLabel>
-          <Switch
-            id="isChecked"
-            defaultChecked={true}
-            value={String(filterOptions?.isUseWaterMark)}
-            onChange={() =>
-              setFilterOptions({
-                ...filterOptions,
-                isUseWaterMark: !filterOptions?.isUseWaterMark,
-              })
-            }
-          colorScheme="orange"
-          />
-        </FormControl>
+        <Switch
+          state={'isUseWaterMark'}
+          options={filterOptions}
+          setOptions={setFilterOptions}
+          content={'하두리 배너 사용'}
+          defaultChecked={true}
+        />
+        <Switch
+          state={'isLargeMode'}
+          options={filterOptions}
+          setOptions={setFilterOptions}
+          content={'필터 크게 보기'}
+          defaultChecked={false}
+        />
       </Flex>
     </Flex>
   );

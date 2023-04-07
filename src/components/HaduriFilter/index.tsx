@@ -34,7 +34,7 @@ const HaduriFilterView = () => {
           gap="10px"
           wrap="wrap"
           w="100%"
-          h="500px"
+          h={filterOptions?.isLargeMode ? '700px': '500px'}
           overflowY="scroll"
           overscrollBehaviorY="none"
         >

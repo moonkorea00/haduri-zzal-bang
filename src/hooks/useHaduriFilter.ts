@@ -8,6 +8,7 @@ const useHaduriFilter = () => {
     filterStyle: '',
     resolution: 0.14,
     isUseWaterMark: true,
+    isLargeMode: false,
   });
 
   const compressImage = (image: File, resolution: number) => {
