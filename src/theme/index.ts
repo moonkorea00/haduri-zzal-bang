@@ -42,4 +42,9 @@ export const theme = extendTheme({
     '8xl': '6rem',
     '9xl': '8rem',
   },
+  breakpoints: {
+    sm: '480px',
+    md: '768px',
+    lg: '1024px',
+  },
 });

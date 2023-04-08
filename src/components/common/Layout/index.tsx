@@ -1,6 +1,6 @@
 import { Flex } from '@chakra-ui/react';
-import Header from '@components/Header';
-import Banner from '@components/Banner';
+import Header from '@components/common/Header';
+import Banner from '@components/common/Banner';
 
 type LayoutProps = {
   children: React.ReactNode;
