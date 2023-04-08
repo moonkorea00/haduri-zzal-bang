@@ -14,20 +14,14 @@ const useHaduriFilter = () => {
   const compressImage = (image: File, resolution: number) => {
     const img = new Image();
     const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
     return new Promise<Blob>((resolve, reject) => {
       img.onload = () => {
         canvas.width = img.width;
         canvas.height = img.height;
 
-        (ctx as CanvasRenderingContext2D).drawImage(
-          img,
-          0,
-          0,
-          img.width,
-          img.height
-        );
+        ctx.drawImage(img, 0, 0, img.width, img.height);
 
         canvas.toBlob(
           blob => {
@@ -48,6 +42,43 @@ const useHaduriFilter = () => {
       };
       reader.readAsDataURL(image);
     });
+  };
+
+  const handleDownload = () => {
+    const img = new Image();
+    const watermark = new Image();
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+
+    img.src = URL.createObjectURL(compressedImage as Blob);
+    watermark.src = 'haduri.svg';
+
+    img.onload = () => {
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      ctx.filter = filterOptions?.filterStyle;
+      ctx.drawImage(img, 0, 0, img.width, img.height);
+      if (filterOptions?.isUseWaterMark) {
+        ctx.filter = 'none';
+        ctx.drawImage(watermark, 0, 0, img.width / 3, img.height / 8);
+      }
+
+      canvas.toBlob(
+        blob => {
+          const a = document.createElement('a');
+          const url = URL.createObjectURL(blob as Blob);
+
+          a.href = url;
+          a.download = 'haduri-zzal-bang.jpeg';
+          a.click();
+
+          URL.revokeObjectURL(url);
+        },
+        'image/jpeg',
+        1
+      );
+    };
   };
 
   const handleFilterImage = () => {
@@ -73,6 +104,7 @@ const useHaduriFilter = () => {
     filterOptions,
     setFilterOptions,
     handleResolutionChange,
+    handleDownload,
   };
 };
 

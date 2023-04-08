@@ -13,6 +13,7 @@ const HaduriFilterView = () => {
     filterOptions,
     setFilterOptions,
     handleResolutionChange,
+    handleDownload,
   } = useHaduriFilter();
 
   return (
@@ -34,7 +35,7 @@ const HaduriFilterView = () => {
           gap="10px"
           wrap="wrap"
           w="100%"
-          h={filterOptions?.isLargeMode ? '700px': '500px'}
+          h={filterOptions?.isLargeMode ? '700px' : '500px'}
           overflowY="scroll"
           overscrollBehaviorY="none"
         >
@@ -46,6 +47,7 @@ const HaduriFilterView = () => {
               filterOptions={filterOptions}
               setFilterOptions={setFilterOptions}
               compressedImage={compressedImage}
+              handleDownload={handleDownload}
             />
           ))}
         </Flex>

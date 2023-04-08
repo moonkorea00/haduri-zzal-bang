@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 import NextImage from 'next/image';
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Button, Text } from '@chakra-ui/react';
 import { filterOptionsProps } from '@types';
 
 type FilterCard = {
@@ -11,6 +11,7 @@ type FilterCard = {
   filterOptions: filterOptionsProps;
   setFilterOptions: Dispatch<SetStateAction<filterOptionsProps>>;
   compressedImage: Blob;
+  handleDownload: () => void;
 };
 
 const FilterCard = ({
@@ -19,16 +20,15 @@ const FilterCard = ({
   filterOptions,
   setFilterOptions,
   compressedImage,
+  handleDownload,
 }: FilterCard) => {
+  const isFilterSelected = filterOptions?.filterStyle === style?.filter;
+
   return (
     <Box
       pos="relative"
       p="4px"
-      border={
-        filterOptions?.filterStyle === style?.filter
-          ? '2px solid orange'
-          : 'none'
-      }
+      border={isFilterSelected ? '2px solid orange' : 'none'}
       borderRadius="8px"
       sx={{ cursor: 'pointer' }}
       onClick={() =>
@@ -54,6 +54,18 @@ const FilterCard = ({
             left: `${filterOptions?.isLargeMode ? '10px' : '6px'}`,
           }}
         />
+      )}
+      {isFilterSelected && (
+        <Button
+          pos="absolute"
+          top="0"
+          right="0"
+          size={filterOptions?.isLargeMode ? 'lg' : 'sm'}
+          colorScheme="orange"
+          onClick={handleDownload}
+        >
+          저장하기
+        </Button>
       )}
       <Text mt="2px" textAlign="center">
         {name}
