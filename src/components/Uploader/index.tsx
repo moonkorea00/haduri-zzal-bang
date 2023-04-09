@@ -1,8 +1,9 @@
-import { useRef, ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { useRef, Dispatch, SetStateAction } from 'react';
 import Image from 'next/image';
 import { Box, Flex, Text, Button } from '@chakra-ui/react';
 import useBreakPoints from '@hooks/useBreakPoints';
 import { assetPaths } from '@utils/assets';
+import useDragAndDropFile from '@hooks/useDragAndDropFile';
 
 type UploaderProps = {
   setImage: Dispatch<SetStateAction<File | null>>;
@@ -11,10 +12,14 @@ type UploaderProps = {
 const Uploader = ({ setImage }: UploaderProps) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const { isMd, isLg } = useBreakPoints();
-
-  const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
-    setImage((e.target.files as FileList)[0]);
-  };
+  const {
+    isDragging,
+    handleDragOver,
+    handleDragEnter,
+    handleDragLeave,
+    handleDrop,
+    handleImageUpload,
+  } = useDragAndDropFile({ setImage });
 
   return (
     <Box
@@ -27,8 +32,14 @@ const Uploader = ({ setImage }: UploaderProps) => {
         alignItems="center"
         gap={isLg ? '0' : '26px'}
         h={isLg ? '280px' : '360px'}
+        bg={isDragging ? 'brand.200' : 'none'}
+        opacity={isDragging ? '0.5' : '1'}
         border="5px dashed black"
         borderRadius="4px"
+        onDragOver={handleDragOver}
+        onDragEnter={handleDragEnter}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
         onClick={() => {
           if (inputRef.current) {
             inputRef.current.click();

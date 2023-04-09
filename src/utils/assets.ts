@@ -4,7 +4,9 @@ export const assetPaths = {
   slider: {
     haduri1: '/assets/slider/haduri2.png',
     haduri2: '/assets/slider/haduri3.png',
+    haduri14: '/assets/slider/haduri14.png',
     haduri3: '/assets/slider/haduri1.png',
+    haduri16: '/assets/slider/haduri16.png',
     haduri4: '/assets/slider/haduri5.png',
     haduri5: '/assets/slider/haduri6.png',
     haduri6: '/assets/slider/haduri7.png',
