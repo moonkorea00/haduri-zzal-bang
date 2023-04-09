@@ -35,16 +35,18 @@ export const theme = extendTheme({
     xl: '1.25rem',
     '2xl': '1.5rem',
     '3xl': '1.875rem',
-    '4xl': '2.25rem',
-    '5xl': '3rem',
-    '6xl': '3.75rem',
-    '7xl': '4.5rem',
-    '8xl': '6rem',
-    '9xl': '8rem',
+    '4xl': '2rem',
+    '5xl': '2.5rem',
+    '6xl': '3rem',
+    '7xl': '3.75rem',
+    '8xl': '4.5rem',
+    '9xl': '6rem',
+    '10xl': '8rem',
   },
   breakpoints: {
-    sm: '480px',
-    md: '768px',
-    lg: '1024px',
+    sm: '480px', // 480px
+    md: '768px', // 768px
+    lg: '992px', // 992px
+    xl: '1280px', // 1280px
   },
 });

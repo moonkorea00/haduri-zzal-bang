@@ -1,21 +1,30 @@
-import { Flex } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import Link from 'next/link';
+import useBreakPoints from '@hooks/useBreakPoints';
 
 const Header = () => {
+  const { isSm, isMd, isLg } = useBreakPoints();
+
   return (
     <Flex
       as="header"
+      justifyContent={isLg ? 'center' : 'row'}
       alignItems="center"
-      h="140px"
-      p="40px"
-      pl="60px"
+      minWidth="320px"
+      h={isLg ? '100px' : '140px'}
+      p={isMd ? '0' : '30px 50px'}
       bg="brand.200"
       color="black"
       borderTopRadius="10px"
-      fontSize="6xl"
+      fontSize={['4xl', '4xl', '5xl', '6xl', '7xl']}
       fontWeight="900"
     >
-      <Link href="/">&#128247; 하두리 짤 만들기 ㅋ&#9996;</Link>
+      <Link href="/">
+        &#128247; 하두리 짤 만들기{' '}
+        <Text as="span" display={isSm ? 'none' : 'inline'}>
+          ㅋ&#9996;
+        </Text>
+      </Link>
     </Flex>
   );
 };
