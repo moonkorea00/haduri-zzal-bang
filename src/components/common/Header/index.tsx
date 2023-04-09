@@ -15,7 +15,7 @@ const Header = () => {
       fontSize="6xl"
       fontWeight="900"
     >
-      <Link href="/">하두리 짤 만들기 ㅋ</Link>
+      <Link href="/">&#128247; 하두리 짤 만들기 ㅋ&#9996;</Link>
     </Flex>
   );
 };
