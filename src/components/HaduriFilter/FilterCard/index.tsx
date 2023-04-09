@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from 'react';
 import NextImage from 'next/image';
 import { Box, Button, Text } from '@chakra-ui/react';
 import { filterOptionsProps } from '@types';
+import { assetPaths } from '@utils/assets';
 
 type FilterCard = {
   style: {
@@ -44,7 +45,7 @@ const FilterCard = ({
       />
       {filterOptions?.isUseWaterMark && (
         <NextImage
-          src="/haduri.svg"
+          src={assetPaths.watermark}
           alt="하두리"
           width={filterOptions?.isLargeMode ? 160 : 80}
           height={50}
@@ -58,8 +59,8 @@ const FilterCard = ({
       {isFilterSelected && (
         <Button
           pos="absolute"
-          top="0"
-          right="0"
+          top="8px"
+          right="8px"
           size={filterOptions?.isLargeMode ? 'lg' : 'sm'}
           colorScheme="orange"
           onClick={handleDownload}

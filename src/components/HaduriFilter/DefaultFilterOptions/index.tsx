@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import { Flex, Text } from '@chakra-ui/react';
-import Range from '../Range';
-import Switch from '../Switch';
+import Range from '@components/common/Range';
+import Switch from '@components/common/Switch';
 import { filterOptionsProps } from '@types';
 
 type DefaultFilterOptionsProps = {

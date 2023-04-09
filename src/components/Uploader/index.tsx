@@ -1,6 +1,7 @@
 import { useRef, ChangeEvent, Dispatch, SetStateAction } from 'react';
 import Image from 'next/image';
 import { Box, Flex, Text, Button } from '@chakra-ui/react';
+import { assetPaths } from '@utils/assets';
 
 type UploaderProps = {
   setImage: Dispatch<SetStateAction<File | null>>;
@@ -38,7 +39,7 @@ const Uploader = ({ setImage }: UploaderProps) => {
         />
         <Box>
           <Image
-            src="/upload/upload.png"
+            src={assetPaths.uploadImg}
             alt="업로드"
             width={170}
             height={150}

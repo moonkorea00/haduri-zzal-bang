@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { filterOptionsProps } from '@types';
+import { assetPaths } from '@utils/assets';
 
 const useHaduriFilter = () => {
   const [image, setImage] = useState<File | null>(null);
@@ -51,7 +52,7 @@ const useHaduriFilter = () => {
     const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
     img.src = URL.createObjectURL(compressedImage as Blob);
-    watermark.src = 'haduri.svg';
+    watermark.src = assetPaths.watermark;
 
     img.onload = () => {
       canvas.width = img.width;
@@ -59,6 +60,7 @@ const useHaduriFilter = () => {
 
       ctx.filter = filterOptions?.filterStyle;
       ctx.drawImage(img, 0, 0, img.width, img.height);
+
       if (filterOptions?.isUseWaterMark) {
         ctx.filter = 'none';
         ctx.drawImage(watermark, 0, 0, img.width / 3, img.height / 8);

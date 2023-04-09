@@ -4,7 +4,7 @@ import DefaultFilterOptions from '@components/HaduriFilter/DefaultFilterOptions'
 import FilterCard from '@components/HaduriFilter/FilterCard';
 import Uploader from '@components/Uploader';
 import useHaduriFilter from '@hooks/useHaduriFilter';
-import { FILTER_OPTIONS } from '@utils';
+import { FILTER_OPTIONS } from '@utils/filter';
 
 const HaduriFilterView = () => {
   const {

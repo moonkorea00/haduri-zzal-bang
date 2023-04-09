@@ -28,8 +28,6 @@ export const styleMap = {
     'grayscale(100%) contrast(0.9) brightness(2) saturate(0.1) blur(0.3px)',
 };
 
-// TODO - refactor
-
 export const FILTER_OPTIONS = [
   {
     id: 1,
