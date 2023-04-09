@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from 'react';
 import NextImage from 'next/image';
 import { Box, Button, Text } from '@chakra-ui/react';
 import { filterOptionsProps } from '@types';
+import useBreakPoints from '@hooks/useBreakPoints';
 import { assetPaths } from '@utils/assets';
 
 type FilterCard = {
@@ -23,6 +24,7 @@ const FilterCard = ({
   compressedImage,
   handleDownload,
 }: FilterCard) => {
+  const { isSm } = useBreakPoints();
   const isFilterSelected = filterOptions?.filterStyle === style?.filter;
 
   return (
@@ -47,12 +49,12 @@ const FilterCard = ({
         <NextImage
           src={assetPaths.watermark}
           alt="하두리"
-          width={filterOptions?.isLargeMode ? 160 : 80}
+          width={filterOptions?.isLargeMode ? (isSm ? 100 : 130) : 70}
           height={50}
           style={{
             position: 'absolute',
-            top: `${filterOptions?.isLargeMode ? '10px' : '6px'}`,
-            left: `${filterOptions?.isLargeMode ? '10px' : '6px'}`,
+            top: `${filterOptions?.isLargeMode ? '13px' : '10px'}`,
+            left: `${filterOptions?.isLargeMode ? '13px' : '10px'}`,
           }}
         />
       )}

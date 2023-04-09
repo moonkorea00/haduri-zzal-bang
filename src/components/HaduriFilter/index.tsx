@@ -4,9 +4,11 @@ import DefaultFilterOptions from '@components/HaduriFilter/DefaultFilterOptions'
 import FilterCard from '@components/HaduriFilter/FilterCard';
 import Uploader from '@components/Uploader';
 import useHaduriFilter from '@hooks/useHaduriFilter';
+import useBreakPoints from '@hooks/useBreakPoints';
 import { FILTER_OPTIONS } from '@utils/filter';
 
 const HaduriFilterView = () => {
+  const { isLg } = useBreakPoints();
   const {
     setImage,
     compressedImage,
@@ -19,7 +21,13 @@ const HaduriFilterView = () => {
   return (
     <Flex as="main" direction="column" gap="16px" p="10px" m="16px">
       {compressedImage && (
-        <Flex as="section" justifyContent="space-around">
+        <Flex
+          as="section"
+          direction={isLg ? 'column' : 'row'}
+          gap={isLg ? '40px' : '0'}
+          mb={isLg ? '0' : '26px'}
+          justifyContent="space-around"
+        >
           <Instructions />
           <DefaultFilterOptions
             filterOptions={filterOptions}

@@ -4,6 +4,7 @@ import {
   FormLabel,
   Switch as ChakraSwitch,
 } from '@chakra-ui/react';
+import useBreakPoints from '@hooks/useBreakPoints';
 import { filterOptionsProps } from '@types';
 
 type SwitchProps = {
@@ -21,6 +22,7 @@ const Switch = ({
   content,
   defaultChecked,
 }: SwitchProps) => {
+  const { isSm, isMd } = useBreakPoints();
   return (
     <FormControl
       display="flex"
@@ -31,7 +33,7 @@ const Switch = ({
       <FormLabel
         as="span"
         htmlFor="isChecked"
-        fontSize="md"
+        fontSize={isMd ? 'sm':"md"}
         fontWeight="600"
         mb="0"
       >

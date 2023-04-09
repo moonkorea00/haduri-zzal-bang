@@ -3,25 +3,21 @@ import { Box, Flex, Text } from '@chakra-ui/react';
 import { BsFillPlayFill, BsFillPauseFill } from 'react-icons/bs';
 import SliderButton from './Button';
 import SliderCard from './SliderCard';
+import useBreakPoints from '@hooks/useBreakPoints';
 import { SLIDER_IMG_DATA } from './slider.utils';
 import { slideRight } from './slider.style';
 
 const Slider = () => {
   const [isSliderRunning, setIsSliderRunning] = useState(true);
-  
-  const cardWidth = 200;
-  const p = 10;
-  const gap = 10;
-  /* TODO : reponsive */
+  const { isMd } = useBreakPoints();
 
   return (
-    <Flex direction="column" w="850px" overflow="hidden">
-      {/* w={`${((cardWidth + gap) * numOfCardsInViewport) + pl}`px} */}
-      {/* TODO : reponsive */}
-      <Flex justifyContent="space-between">
+    <Flex direction="column" maxWidth="850px" overflow="hidden">
+      {/* maxWidth = (cardWidth + gap) * numOfCardsInViewPort + pl */}
+      <Flex justifyContent="space-between" maxWidth={'850'}>
         <Text
           as="span"
-          p="6px 10px"
+          p={isMd ? '4px 8px' : '6px 10px'}
           mb="4px"
           fontSize="md"
           fontWeight="700"
@@ -39,31 +35,22 @@ const Slider = () => {
           />
         </Flex>
       </Flex>
-      <Flex>
+      <Flex
+      >
         <Box
           display="flex"
           bg="white"
-          gap={`${gap}px`}
-          p={`${p}px`}
+          gap="10px"
+          p="10px"
           pt="0"
           animation={`${slideRight} 60s linear infinite`}
           sx={{ animationPlayState: isSliderRunning ? 'running' : 'paused' }}
         >
           {SLIDER_IMG_DATA.map(({ id, src, title }) => (
-            <SliderCard
-              key={id}
-              src={src}
-              title={title}
-              cardWidth={cardWidth}
-            />
+            <SliderCard key={id} src={src} title={title} cardWidth={200} />
           ))}
           {SLIDER_IMG_DATA.slice(0, 4).map(({ id, src, title }) => (
-            <SliderCard
-              key={id}
-              src={src}
-              title={title}
-              cardWidth={cardWidth}
-            />
+            <SliderCard key={id} src={src} title={title} cardWidth={200} />
           ))}
         </Box>
       </Flex>
