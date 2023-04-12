@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Box, Flex, Text } from '@chakra-ui/react';
 import { BsFillPlayFill, BsFillPauseFill } from 'react-icons/bs';
-import SliderButton from './Button';
+import IconButton from '@components/common/Button';
 import SliderCard from './SliderCard';
 import useBreakPoints from '@hooks/useBreakPoints';
 import { SLIDER_IMG_DATA } from './slider.utils';
@@ -27,16 +27,15 @@ const Slider = () => {
           하두리 포토존
         </Text>
         <Flex alignItems="center" gap="6px">
-          <SliderButton setState={setIsSliderRunning} icon={BsFillPlayFill} />
-          <SliderButton
+          <IconButton setState={setIsSliderRunning} icon={BsFillPlayFill} />
+          <IconButton
             state={false}
             setState={setIsSliderRunning}
             icon={BsFillPauseFill}
           />
         </Flex>
       </Flex>
-      <Flex
-      >
+      <Flex>
         <Box
           display="flex"
           bg="white"

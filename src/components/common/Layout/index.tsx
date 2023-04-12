@@ -21,10 +21,6 @@ const Layout = ({ children }: LayoutProps) => {
       bg="white"
       boxShadow="rgb(227 231 235) 0px 16px 48px"
     >
-      <audio
-          src='https://docs.google.com/uc?export=open&id=14JlzHWUE2TqAsN237ft43SOw02xDPori'
-          autoPlay={true}>
-        </audio>
       <Header />
       <Banner />
       {children}
