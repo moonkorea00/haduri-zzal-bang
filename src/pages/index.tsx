@@ -1,14 +1,14 @@
-import HaduriFilterView from '@components/HaduriFilter';
 import NextHead from '@components/common/NextHead';
 import { main } from '@components/common/NextHead/NextHead.utils';
+import Main from '@components/Main';
 
-const Main = () => {
+const Home = () => {
   return (
     <>
       <NextHead metaData={main} />
-      <HaduriFilterView />
+      <Main />
     </>
   );
 };
 
-export default Main;
+export default Home;

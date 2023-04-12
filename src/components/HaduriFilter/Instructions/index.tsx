@@ -1,4 +1,4 @@
-import { Flex, Box, Button, Text } from '@chakra-ui/react';
+import { Flex, Button, Text } from '@chakra-ui/react';
 import useBreakPoints from '@hooks/useBreakPoints';
 import { INSTRUCTIONS_DATA } from './instructions.utils';
 
@@ -7,16 +7,16 @@ const Instructions = () => {
 
   return (
     <Flex direction="column" gap="3px">
-      <Box mb="6px">
+      <Flex mb="6px">
         <Button
-          as="h2"
           size={isMd ? 'sm' : 'md'}
           fontSize={isMd ? 'md' : 'xl'}
           fontWeight="600"
+          sx={{ cursor: 'default' }}
         >
-          필터 / 화질 선택
+          필터 / 화질
         </Button>
-      </Box>
+      </Flex>
       {INSTRUCTIONS_DATA.map(({ id, text }) => (
         <Text key={id} fontSize={isMd ? '0.925rem' : 'md'}>
           &#9432; {text}

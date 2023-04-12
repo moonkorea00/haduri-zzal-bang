@@ -1,5 +1,5 @@
-import { Dispatch, SetStateAction } from 'react';
-import { Flex, Text } from '@chakra-ui/react';
+import { Dispatch, MouseEventHandler, SetStateAction } from 'react';
+import { Flex, Text,Button } from '@chakra-ui/react';
 import Range from '@components/common/Range';
 import Switch from '@components/common/Switch';
 import useBreakPoints from '@hooks/useBreakPoints';
@@ -9,12 +9,14 @@ type DefaultFilterOptionsProps = {
   filterOptions: filterOptionsProps;
   setFilterOptions: Dispatch<SetStateAction<filterOptionsProps>>;
   handleResolutionChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  resetImgState: MouseEventHandler<HTMLButtonElement>;
 };
 
 const DefaultFilterOptions = ({
   filterOptions,
   setFilterOptions,
   handleResolutionChange,
+  resetImgState
 }: DefaultFilterOptionsProps) => {
   const { isMd, isLg } = useBreakPoints();
 
@@ -51,6 +53,9 @@ const DefaultFilterOptions = ({
           content={'이미지 크게 보기'}
           defaultChecked={false}
         />
+        <Button size="sm" onClick={resetImgState}>
+          다른 사진 선택
+        </Button>
       </Flex>
     </Flex>
   );

@@ -7,7 +7,13 @@ const SliderCard = ({ src, title, cardWidth }: SliderCardProps) => {
   return (
     <Flex direction="column" alignItems="center" gap="6px" w={cardWidth}>
       <Box w={cardWidth}>
-        <Image src={src} alt="하두리" width={cardWidth} height={200} loading="eager" />
+        <Image
+          src={src}
+          alt="하두리"
+          width={cardWidth}
+          height={200}
+          loading="eager"
+        />
       </Box>
       <Text fontWeight="600">{title}</Text>
     </Flex>

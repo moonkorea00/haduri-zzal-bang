@@ -98,6 +98,8 @@ const useHaduriFilter = () => {
     });
   };
 
+  const resetImgState = () => setCompressedImage(null);
+
   useEffect(handleFilterImage, [image, filterOptions.resolution]);
 
   return {
@@ -107,6 +109,7 @@ const useHaduriFilter = () => {
     setFilterOptions,
     handleResolutionChange,
     handleDownload,
+    resetImgState,
   };
 };
 
