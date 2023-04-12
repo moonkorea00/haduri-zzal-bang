@@ -13,7 +13,7 @@ const Slider = () => {
 
   return (
     <Flex direction="column" maxWidth="850px" overflow="hidden">
-      {/* maxWidth = (cardWidth + gap) * numOfCardsInViewPort + pl */}
+      {/* calc slider maxWidth = (cardWidth + gap) * numOfCardsInViewPort + pl */}
       <Flex justifyContent="space-between" maxWidth={'850'}>
         <Text
           as="span"

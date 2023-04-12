@@ -13,7 +13,7 @@ const Banner = () => {
       p={isLg ? '0 10px' : '10px'}
       m={isLg ? '10px 0 0 0' : '16px'}
       bg="brand.50"
-      borderRadius="16px"
+      borderRadius={isLg ? '0' : '16px'}
     >
       <Flex
         direction="column"

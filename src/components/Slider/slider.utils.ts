@@ -4,6 +4,7 @@ export const SLIDER_IMG_DATA = [
   { id: 1, src: assetPaths.slider.haduri1, title: '서울 간지남(21)' },
   { id: 3, src: assetPaths.slider.haduri2, title: '뭐' },
   { id: 4, src: assetPaths.slider.haduri14, title: '우승했어' },
+  { id: 17, src: assetPaths.slider.haduri17, title: '사우디에서 찰칵' },
   { id: 2, src: assetPaths.slider.haduri3, title: '밤새고 찰칵 >.<' },
   { id: 14, src: assetPaths.slider.haduri16, title: 'squid ㅋ' },
   { id: 5, src: assetPaths.slider.haduri4, title: '셀카ㅋ^^' },

@@ -16,6 +16,7 @@ const HaduriFilterView = () => {
     setFilterOptions,
     handleResolutionChange,
     handleDownload,
+    resetImgState,
   } = useHaduriFilter();
 
   return (
@@ -33,6 +34,7 @@ const HaduriFilterView = () => {
             filterOptions={filterOptions}
             setFilterOptions={setFilterOptions}
             handleResolutionChange={handleResolutionChange}
+            resetImgState={resetImgState}
           />
         </Flex>
       )}
