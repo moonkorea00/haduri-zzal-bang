@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.haduri-zzal.com
+
+# Sitemaps
+Sitemap: https://www.haduri-zzal.com/sitemap.xml

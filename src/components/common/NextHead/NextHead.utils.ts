@@ -5,7 +5,7 @@ export const main = {
   description:
     '틱톡보다 20년 앞서갔던 한국 인싸문화, 추억의 하두리 필터로 짤 만들기',
   ogImage: assetPaths.ogImage,
-  url: 'https://haduri-zzal-bang.vercel.app/create-haduri',
+  url: 'https://haduri-zzal.com/create-haduri',
 }
 
 export const createHaduri = {
@@ -13,5 +13,5 @@ export const createHaduri = {
   description:
     '틱톡보다 20년 앞서갔던 한국 인싸문화, 추억의 하두리 필터로 짤 만들기',
   ogImage: assetPaths.ogImage,
-  url: 'https://haduri-zzal-bang.vercel.app',
+  url: 'https://haduri-zzal.com',
 };

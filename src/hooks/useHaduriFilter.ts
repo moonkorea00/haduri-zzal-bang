@@ -72,7 +72,7 @@ const useHaduriFilter = () => {
           const url = URL.createObjectURL(blob as Blob);
 
           a.href = url;
-          a.download = 'haduri-zzal-bang.jpeg';
+          a.download = 'haduri-zzal.jpeg';
           a.click();
 
           URL.revokeObjectURL(url);
