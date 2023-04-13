@@ -27,10 +27,15 @@ const Slider = () => {
           하두리 포토존
         </Text>
         <Flex alignItems="center" gap="6px">
-          <IconButton setState={setIsSliderRunning} icon={BsFillPlayFill} />
+          <IconButton
+            setState={setIsSliderRunning}
+            icon={BsFillPlayFill}
+            label={'슬라이드쇼 재생'}
+          />
           <IconButton
             state={false}
             setState={setIsSliderRunning}
+            label={'슬라이드쇼 일시 중지'}
             icon={BsFillPauseFill}
           />
         </Flex>

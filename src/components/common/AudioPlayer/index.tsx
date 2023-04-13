@@ -23,8 +23,8 @@ const AudioPlayer = () => {
       <Text mr="4px" fontSize={isSm ? 'xs' : 'sm'}>
         &#127925;MC몽 - 아이스크림(2006)
       </Text>
-      <IconButton setState={handlePlay} icon={BsFillPlayFill} />
-      <IconButton state={false} setState={handlePause} icon={BsFillPauseFill} />
+      <IconButton setState={handlePlay} icon={BsFillPlayFill} label={'음악 재생'}/>
+      <IconButton state={false} setState={handlePause} icon={BsFillPauseFill} label={'음악 일시 중지'}/>
       <audio src={assetPaths.audio} ref={playRef} />
     </Flex>
   );
