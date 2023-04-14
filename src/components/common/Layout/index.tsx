@@ -13,7 +13,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <Flex
       flexDir="column"
-      gap={isMd ? '36px' : '100px'}
+      gap={isMd ? '36px' : '50px'}
       maxW="1280px"
       m={isMd ? '10px auto' : '36px auto'}
       pb="70px"

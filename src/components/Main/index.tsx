@@ -11,7 +11,7 @@ const Main = () => {
       direction="column"
       justifyContent="center"
       alignItems="center"
-      gap={isLg ? '80px' : '130px'}
+      gap={isLg ? '80px' : '100px'}
     >
       <Banner />
       <Demo />

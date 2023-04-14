@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { Flex, Text } from '@chakra-ui/react';
 import { BsFillPlayFill, BsFillPauseFill } from 'react-icons/bs';
 import IconButton from '../Button';
-import useAudioPlayer from './audioPlayer.hooks';
+import useAudioPlayer from './hooks';
 import useBreakPoints from '@hooks/useBreakPoints';
 import { assetPaths } from '@utils/assets';
 
