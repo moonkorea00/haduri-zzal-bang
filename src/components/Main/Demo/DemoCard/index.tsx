@@ -67,9 +67,11 @@ const DemoCard = ({
           {description}
         </Box>
         <Button
-          colorScheme="orange"
+          bg="brand.600"
+          color="white"
           size={isMd ? 'sm' : 'md'}
           borderRadius="24px"
+          _hover={{bg:"brand.500"}}
           onClick={() => push('/create-haduri')}
         >
           {btnContent} &#128073;
