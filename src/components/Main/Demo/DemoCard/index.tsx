@@ -1,6 +1,6 @@
 import { Flex, Box, Button } from '@chakra-ui/react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import useBreakPoints from '@hooks/useBreakPoints';
 import { assetPaths } from '@utils/assets';
@@ -20,6 +20,7 @@ const DemoCard = ({
   btnContent,
   contentType,
 }: DemoCardProps) => {
+  const { push } = useRouter();
   const { isMd, isLg } = useBreakPoints();
 
   return (
@@ -69,8 +70,9 @@ const DemoCard = ({
           colorScheme="orange"
           size={isMd ? 'sm' : 'md'}
           borderRadius="24px"
+          onClick={() => push('/create-haduri')}
         >
-          <Link href="/create-haduri">{btnContent} &#128073;</Link>
+          {btnContent} &#128073;
         </Button>
       </Flex>
     </Flex>

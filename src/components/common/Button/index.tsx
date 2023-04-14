@@ -6,6 +6,7 @@ type IconButtonProps = {
   size?: string;
   variant?: string;
   icon: IconType;
+  label: string;
   state?: boolean;
   setState: Dispatch<SetStateAction<boolean>>;
 };
@@ -14,11 +15,17 @@ const IconButton = ({
   size = 'xs',
   variant = 'outline',
   icon,
+  label,
   state = true,
   setState,
 }: IconButtonProps) => {
   return (
-    <Button size={size} variant={variant} onClick={() => setState(state)}>
+    <Button
+      size={size}
+      variant={variant}
+      aria-label={label}
+      onClick={() => setState(state)}
+    >
       <Icon as={icon} />
     </Button>
   );
