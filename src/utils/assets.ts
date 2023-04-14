@@ -24,5 +24,5 @@ export const assetPaths = {
   audio: '/assets/common/icecream.mp3',
   favicon: '/assets/favicon/haduri.ico',
   appleTouchIcon: '/assets/favicon/haduri.png',
-  ogImage: '/assets/haduri-zzal-bang.png',
+  ogImage: '/assets/haduri-zzal.png',
 };
