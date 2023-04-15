@@ -17,6 +17,8 @@ const useHaduriFilter = () => {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
+    img.src = URL.createObjectURL(image);
+
     return new Promise<Blob>((resolve, reject) => {
       img.onload = () => {
         canvas.width = img.width;
@@ -28,6 +30,7 @@ const useHaduriFilter = () => {
           blob => {
             if (blob) {
               resolve(blob);
+              URL.revokeObjectURL(img.src);
             } else {
               reject(new Error('Failed to compress image'));
             }
@@ -36,12 +39,6 @@ const useHaduriFilter = () => {
           resolution
         );
       };
-
-      const reader = new FileReader();
-      reader.onload = e => {
-        img.src = e.target?.result as string;
-      };
-      reader.readAsDataURL(image);
     });
   };
 
