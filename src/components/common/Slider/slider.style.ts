@@ -17,5 +17,3 @@ export const slideRight = keyframes`
     transform: translateX(${translateXValue}px)
 }
 `;
-
-/* - ${p}px - (${gap}*${SLIDER_IMG_DATA.length - 1})=50 */
