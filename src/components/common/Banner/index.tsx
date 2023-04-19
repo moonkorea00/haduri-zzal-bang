@@ -1,5 +1,5 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
-import Slider from '@components/Slider';
+import Slider from '@components/common/Slider';
 import useBreakPoints from '@hooks/useBreakPoints';
 
 const Banner = () => {
