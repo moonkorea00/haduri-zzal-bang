@@ -2,15 +2,18 @@ import { useState, useEffect } from 'react';
 import { filterOptionsProps } from '@types';
 import { assetPaths } from '@utils/assets';
 
+const defaultFilterOptions = {
+  filterStyle: '',
+  resolution: 0.14,
+  isUseWaterMark: true,
+  isLargeMode: false,
+};
+
 const useHaduriFilter = () => {
   const [image, setImage] = useState<File | null>(null);
   const [compressedImage, setCompressedImage] = useState<Blob | null>(null);
-  const [filterOptions, setFilterOptions] = useState<filterOptionsProps>({
-    filterStyle: '',
-    resolution: 0.14,
-    isUseWaterMark: true,
-    isLargeMode: false,
-  });
+  const [filterOptions, setFilterOptions] =
+    useState<filterOptionsProps>(defaultFilterOptions);
 
   const compressImage = (image: File, resolution: number) => {
     const img = new Image();
@@ -18,7 +21,6 @@ const useHaduriFilter = () => {
     const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
     img.src = URL.createObjectURL(image);
-
     return new Promise<Blob>((resolve, reject) => {
       img.onload = () => {
         canvas.width = img.width;
@@ -88,18 +90,23 @@ const useHaduriFilter = () => {
     }
   };
 
-  const handleResolutionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleResolutionChange = (value: any) => {
     setFilterOptions({
       ...filterOptions,
-      resolution: parseFloat(e.target.value),
+      resolution: Number(value),
     });
   };
 
-  const resetImgState = () => setCompressedImage(null);
+  const resetImgState = () => {
+    setFilterOptions(defaultFilterOptions);
+    setImage(null);
+    setCompressedImage(null);
+  };
 
   useEffect(handleFilterImage, [image, filterOptions.resolution]);
 
   return {
+    image,
     setImage,
     compressedImage,
     filterOptions,

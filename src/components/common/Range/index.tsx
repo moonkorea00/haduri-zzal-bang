@@ -1,16 +1,18 @@
-import { ChangeEvent } from 'react';
 import { Box } from '@chakra-ui/react';
+import useDebounceChange from '@hooks/useDebounceChange';
 
 type RangeProps = {
   min: number;
   max: number;
   step: number;
   value: number;
-  handleChange: (() => void) | ((e: ChangeEvent<HTMLInputElement>) => void);
+  handleChange: (value: number) => void;
   width: number;
 };
 
 const Range = ({ min, max, step, value, handleChange, width }: RangeProps) => {
+  const handleDebounceChange = useDebounceChange(handleChange, value);
+
   return (
     <Box
       as="input"
@@ -19,7 +21,7 @@ const Range = ({ min, max, step, value, handleChange, width }: RangeProps) => {
       max={max}
       step={step}
       value={value}
-      onChange={handleChange}
+      onChange={handleDebounceChange}
       sx={{
         width: `${width}px`,
         filter: 'hue-rotate(3.142rad)',
