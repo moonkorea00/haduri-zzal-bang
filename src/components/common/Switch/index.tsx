@@ -22,7 +22,7 @@ const Switch = ({
   content,
   defaultChecked,
 }: SwitchProps) => {
-  const { isSm, isMd } = useBreakPoints();
+  const { isMd } = useBreakPoints();
   return (
     <FormControl
       display="flex"
@@ -33,7 +33,7 @@ const Switch = ({
       <FormLabel
         as="span"
         htmlFor="isChecked"
-        fontSize={isMd ? 'sm':"md"}
+        fontSize={isMd ? 'sm' : 'md'}
         fontWeight="600"
         mb="0"
       >

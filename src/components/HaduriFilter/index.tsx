@@ -2,14 +2,15 @@ import { Flex } from '@chakra-ui/react';
 import Instructions from '@components/HaduriFilter/Instructions';
 import DefaultFilterOptions from '@components/HaduriFilter/DefaultFilterOptions';
 import FilterCard from '@components/HaduriFilter/FilterCard';
-import Uploader from '@components/Uploader';
+import Uploader from '@components/HaduriFilter/Uploader';
 import useHaduriFilter from '@hooks/useHaduriFilter';
 import useBreakPoints from '@hooks/useBreakPoints';
 import { FILTER_OPTIONS } from '@utils/filter';
 
-const HaduriFilterView = () => {
+const HaduriFilter = () => {
   const { isLg } = useBreakPoints();
   const {
+    image,
     setImage,
     compressedImage,
     filterOptions,
@@ -31,6 +32,7 @@ const HaduriFilterView = () => {
         >
           <Instructions />
           <DefaultFilterOptions
+            image={image}
             filterOptions={filterOptions}
             setFilterOptions={setFilterOptions}
             handleResolutionChange={handleResolutionChange}
@@ -47,7 +49,6 @@ const HaduriFilterView = () => {
           w="100%"
           h={filterOptions?.isLargeMode ? '700px' : '500px'}
           overflowY="scroll"
-          overscrollBehaviorY="none"
         >
           {FILTER_OPTIONS.map(({ id, style, name }) => (
             <FilterCard
@@ -68,4 +69,4 @@ const HaduriFilterView = () => {
   );
 };
 
-export default HaduriFilterView;
+export default HaduriFilter;

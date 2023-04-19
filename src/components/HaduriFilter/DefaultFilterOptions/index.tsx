@@ -1,27 +1,32 @@
-import { Dispatch, MouseEventHandler, SetStateAction } from 'react';
-import { Flex, Text,Button } from '@chakra-ui/react';
+import { useRef, Dispatch, MouseEventHandler, SetStateAction } from 'react';
+import { Flex, Text, Button } from '@chakra-ui/react';
 import Range from '@components/common/Range';
 import Switch from '@components/common/Switch';
 import useBreakPoints from '@hooks/useBreakPoints';
+import useScrollToRef from '../hooks/useScrollToRef';
 import { filterOptionsProps } from '@types';
 
 type DefaultFilterOptionsProps = {
+  image: File | null;
   filterOptions: filterOptionsProps;
   setFilterOptions: Dispatch<SetStateAction<filterOptionsProps>>;
-  handleResolutionChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleResolutionChange: (value: any) => void;
   resetImgState: MouseEventHandler<HTMLButtonElement>;
 };
 
 const DefaultFilterOptions = ({
+  image,
   filterOptions,
   setFilterOptions,
   handleResolutionChange,
-  resetImgState
+  resetImgState,
 }: DefaultFilterOptionsProps) => {
+  const filterRef = useRef<HTMLDivElement>(null);
   const { isMd, isLg } = useBreakPoints();
+  useScrollToRef(filterRef, [image]);
 
   return (
-    <Flex>
+    <Flex ref={filterRef}>
       <Flex direction="column" gap="4px">
         <Flex justifyContent="space-between">
           <Text as="span" fontSize={isMd ? '0.93rem' : 'md'} fontWeight="600">
