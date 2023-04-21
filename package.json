@@ -5,31 +5,30 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "next-sitemap",
     "start": "next start",
+    "deploy": "next build && next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.5.5",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "@types/node": "18.15.11",
-    "@types/react": "18.0.33",
-    "@types/react-dom": "18.0.11",
-    "eslint": "8.37.0",
-    "eslint-config-next": "13.2.4",
     "framer-motion": "^10.11.2",
     "i": "^0.3.7",
     "next": "13.2.4",
-    "next-sitemap": "^4.0.7",
     "npm": "^9.6.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",
-    "react-player": "^2.12.0",
-    "typescript": "5.0.3"
+    "react-player": "^2.12.0"
   },
   "devDependencies": {
-    "@types/gtag.js": "^0.0.12"
+    "@types/gtag.js": "^0.0.12",
+    "@types/node": "^18.15.13",
+    "@types/react": "^18.0.37",
+    "@types/react-dom": "^18.0.11",
+    "eslint": "^8.38.0",
+    "eslint-config-next": "^13.3.0",
+    "typescript": "^5.0.4"
   }
 }
