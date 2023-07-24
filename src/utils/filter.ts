@@ -73,7 +73,7 @@ export const styleMap = {
   },
 };
 
-export const FILTER_OPTIONS = Object.keys(styleMap).map((key, idx) => {
+export const FILTER_STYLE_OPTIONS = Object.keys(styleMap).map((key, idx) => {
   return {
     id: idx + 1,
     style: { filter: styleMap[key as keyof typeof styleMap].filter },

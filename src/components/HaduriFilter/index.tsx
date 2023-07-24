@@ -5,7 +5,7 @@ import FilterCard from '@components/HaduriFilter/FilterCard';
 import Uploader from '@components/HaduriFilter/Uploader';
 import useImageProcessing from '@hooks/useImageProcessing';
 import useBreakPoints from '@hooks/useBreakPoints';
-import { FILTER_OPTIONS } from '@utils/filter';
+import { FILTER_STYLE_OPTIONS } from '@utils/filter';
 
 const HaduriFilter = () => {
   const { isLg } = useBreakPoints();
@@ -46,7 +46,7 @@ const HaduriFilter = () => {
           h={imageState.filterOptions.isLargeMode ? '700px' : '500px'}
           overflowY="scroll"
         >
-          {FILTER_OPTIONS.map(({ id, style, name }) => (
+          {FILTER_STYLE_OPTIONS.map(({ id, style, name }) => (
             <FilterCard
               key={id}
               style={style}
