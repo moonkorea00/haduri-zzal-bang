@@ -1,9 +1,9 @@
-import type { SetFilterOptions, filterOptionsType } from '@types';
+import type { SetFilterOptions, TFilterOptions } from '@types';
 import { Box } from '@chakra-ui/react';
 import useDebounceChange from '@hooks/useDebounceChange';
 
 type RangeProps = {
-  name: keyof filterOptionsType;
+  name: keyof TFilterOptions;
   min?: number;
   max?: number;
   step?: number;
