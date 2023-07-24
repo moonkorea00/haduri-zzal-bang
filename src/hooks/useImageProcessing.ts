@@ -1,5 +1,6 @@
 import { ActionTypes, SetFilterOptions } from '@types';
 import { useReducer, useEffect, useCallback } from 'react';
+import { useToast } from '@chakra-ui/react';
 import {
   imageProcessingReducer,
   initialImageProcessingState,
@@ -7,6 +8,7 @@ import {
 import { assetPaths } from '@utils/assets';
 
 const useImageProcessing = () => {
+  const toast = useToast();
   const [state, dispatch] = useReducer(
     imageProcessingReducer,
     initialImageProcessingState
@@ -105,10 +107,18 @@ const useImageProcessing = () => {
         .then(blob =>
           dispatch({ type: ActionTypes.COMPRESS_IMAGE, payload: blob })
         )
-        .catch(e => console.log(e));
+        .catch(() =>
+          toast({
+            description: '문제가 발생했습니다. 잠시 후 다시 시도해 주세요.',
+            status: 'error',
+            duration: 3000,
+            isClosable: true,
+          })
+        );
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [compressImage, state.filterOptions.resolution, state.image]);
-
+  
   useEffect(compressAndSetImage, [compressAndSetImage]);
 
   return {
