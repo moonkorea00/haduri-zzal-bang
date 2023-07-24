@@ -1,4 +1,4 @@
-import type { SetFilterOptions, filterOptionsType } from '@types';
+import type { SetFilterOptions, TFilterOptions } from '@types';
 import {
   FormControl,
   FormLabel,
@@ -7,7 +7,7 @@ import {
 import useBreakPoints from '@hooks/useBreakPoints';
 
 type SwitchProps = {
-  name: keyof filterOptionsType;
+  name: keyof TFilterOptions;
   value: boolean;
   onChange: SetFilterOptions;
   label: string;
