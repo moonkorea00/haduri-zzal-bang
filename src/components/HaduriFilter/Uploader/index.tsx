@@ -1,12 +1,12 @@
-import { useRef, Dispatch, SetStateAction } from 'react';
+import { useRef } from 'react';
 import Image from 'next/image';
 import { Box, Flex, Text, Button } from '@chakra-ui/react';
 import useBreakPoints from '@hooks/useBreakPoints';
-import { assetPaths } from '@utils/assets';
 import useDragAndDropFile from '@hooks/useDragAndDropFile';
+import { assetPaths } from '@utils/assets';
 
 type UploaderProps = {
-  setImage: Dispatch<SetStateAction<File | null>>;
+  setImage: (value: File) => void;
 };
 
 const Uploader = ({ setImage }: UploaderProps) => {
@@ -40,11 +40,7 @@ const Uploader = ({ setImage }: UploaderProps) => {
         onDragEnter={handleDragEnter}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        onClick={() => {
-          if (inputRef.current) {
-            inputRef.current.click();
-          }
-        }}
+        onClick={() => inputRef.current?.click()}
       >
         <input
           type="file"

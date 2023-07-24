@@ -1,25 +1,24 @@
-import { Dispatch, SetStateAction } from 'react';
+import type { SetFilterOptions, filterOptionsType } from '@types';
 import {
   FormControl,
   FormLabel,
   Switch as ChakraSwitch,
 } from '@chakra-ui/react';
 import useBreakPoints from '@hooks/useBreakPoints';
-import { filterOptionsProps } from '@types';
 
 type SwitchProps = {
-  state: string;
-  options: filterOptionsProps;
-  setOptions: Dispatch<SetStateAction<filterOptionsProps>>;
-  content: string;
+  name: keyof filterOptionsType;
+  value: boolean;
+  onChange: SetFilterOptions;
+  label: string;
   defaultChecked: boolean;
 };
 
 const Switch = ({
-  state,
-  options,
-  setOptions,
-  content,
+  name,
+  value,
+  onChange,
+  label,
   defaultChecked,
 }: SwitchProps) => {
   const { isMd } = useBreakPoints();
@@ -37,18 +36,13 @@ const Switch = ({
         fontWeight="600"
         mb="0"
       >
-        {content}
+        {label}
       </FormLabel>
       <ChakraSwitch
         id="isChecked"
         defaultChecked={defaultChecked}
-        value={String(options?.[state as keyof typeof options])}
-        onChange={() =>
-          setOptions({
-            ...options,
-            [state]: !options?.[state as keyof typeof options],
-          })
-        }
+        value={String(value)}
+        onChange={() => onChange(name, !value)}
         colorScheme="orange"
       />
     </FormControl>

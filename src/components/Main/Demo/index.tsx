@@ -1,7 +1,7 @@
 import { Flex } from '@chakra-ui/react';
 import DemoCard from './DemoCard';
-import { MAIN_PAGE_DATA } from '../main.utils';
 import useBreakPoints from '@hooks/useBreakPoints';
+import { MAIN_PAGE_DATA } from '../main.utils';
 
 const Demo = () => {
   const { isSm, isMd } = useBreakPoints();

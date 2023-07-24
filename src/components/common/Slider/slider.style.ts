@@ -1,5 +1,5 @@
 import { keyframes } from '@chakra-ui/react';
-import { SLIDER_IMG_DATA } from './slider.utils';
+import { SLIDER_IMG_DATA } from './slider.constants';
 
 const cardWidth = 200;
 const p = 10;

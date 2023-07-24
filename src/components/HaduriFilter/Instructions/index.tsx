@@ -1,4 +1,4 @@
-import { Flex, Button, Text } from '@chakra-ui/react';
+import { Flex, Button } from '@chakra-ui/react';
 import InstructionsItem from './InstructionsItem';
 import useBreakPoints from '@hooks/useBreakPoints';
 

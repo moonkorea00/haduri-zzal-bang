@@ -1,4 +1,4 @@
-import { Flex, Text, Box } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import AudioPlayer from '../AudioPlayer';
 import useBreakPoints from '@hooks/useBreakPoints';
