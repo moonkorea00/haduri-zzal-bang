@@ -1,12 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState, ChangeEvent } from 'react';
+import type { ChangeEvent } from 'react';
+import { useEffect, useState } from 'react';
 
-const useDebounceChange = (
-  onChange: (value: number) => void,
-  initialValue: number,
+const useDebounceChange = <T>(
+  onChange: (value: T) => void,
+  initialValue: T,
+  convert: (value: string) => T,
   delay: number = 15
 ) => {
-  const [debouncedValue, setDebouncedValue] = useState<number>(initialValue);
+  const [debouncedValue, setDebouncedValue] = useState<T>(initialValue);
+
+  const handleDebounceChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setDebouncedValue(convert(e.target.value));
+  };
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -15,10 +21,6 @@ const useDebounceChange = (
 
     return () => clearTimeout(timeout);
   }, [debouncedValue]);
-
-  const handleDebounceChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setDebouncedValue(Number(e.target.value));
-  };
 
   return handleDebounceChange;
 };

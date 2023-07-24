@@ -1,6 +1,6 @@
-import { Flex, Button, Text } from '@chakra-ui/react';
+import { Flex, Button } from '@chakra-ui/react';
+import InstructionsItem from './InstructionsItem';
 import useBreakPoints from '@hooks/useBreakPoints';
-import { INSTRUCTIONS_DATA } from './instructions.utils';
 
 const Instructions = () => {
   const { isMd } = useBreakPoints();
@@ -18,12 +18,22 @@ const Instructions = () => {
         </Button>
       </Flex>
       {INSTRUCTIONS_DATA.map(({ id, text }) => (
-        <Text key={id} fontSize={isMd ? '0.925rem' : 'md'}>
-          &#9432; {text}
-        </Text>
+        <InstructionsItem key={id} text={text} />
       ))}
     </Flex>
   );
 };
 
 export default Instructions;
+
+const INSTRUCTIONS_DATA = [
+  {
+    id: 1,
+    text: '인물과 옷차림이 촌스러울수록 더 훌륭한 하두리 감성을 살릴 수 있습니다.',
+  },
+  {
+    id: 2,
+    text: '원본 사진에 따라 화면에 보이는 화질과 다운로드된 사진의 화질이 상이할 수 있습니다.',
+  },
+  { id: 3, text: '권장 화질 : 0.1 ~ 0.2' },
+];

@@ -1,13 +1,8 @@
-import {
-  useState,
-  DragEvent,
-  ChangeEvent,
-  Dispatch,
-  SetStateAction,
-} from 'react';
+import type { DragEvent, ChangeEvent } from 'react';
+import { useState } from 'react';
 
 type useDragAndDropFileProps = {
-  setImage: Dispatch<SetStateAction<File | null>>;
+  setImage: (value: File) => void;
 };
 
 const useDragAndDropFile = ({ setImage }: useDragAndDropFileProps) => {

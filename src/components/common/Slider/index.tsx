@@ -4,7 +4,7 @@ import { BsFillPlayFill, BsFillPauseFill } from 'react-icons/bs';
 import IconButton from '@components/common/Button';
 import SliderCard from './SliderCard';
 import useBreakPoints from '@hooks/useBreakPoints';
-import { SLIDER_IMG_DATA } from './slider.utils';
+import { SLIDER_IMG_DATA } from './slider.constants';
 import { slideRight } from './slider.style';
 
 const Slider = () => {

@@ -1,17 +1,31 @@
+import type { SetFilterOptions, TFilterOptions } from '@types';
 import { Box } from '@chakra-ui/react';
 import useDebounceChange from '@hooks/useDebounceChange';
 
 type RangeProps = {
-  min: number;
-  max: number;
-  step: number;
+  name: keyof TFilterOptions;
+  min?: number;
+  max?: number;
+  step?: number;
   value: number;
-  handleChange: (value: number) => void;
+  onSetFilterOptions: SetFilterOptions;
   width: number;
 };
 
-const Range = ({ min, max, step, value, handleChange, width }: RangeProps) => {
-  const handleDebounceChange = useDebounceChange(handleChange, value);
+const Range = ({
+  name,
+  min = 0,
+  max = 1,
+  step = 0.02,
+  value,
+  onSetFilterOptions,
+  width,
+}: RangeProps) => {
+  const handleDebounceChange = useDebounceChange<number>(
+    (value) => onSetFilterOptions(name, value),
+    value,
+    Number
+  );
 
   return (
     <Box
