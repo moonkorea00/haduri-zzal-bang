@@ -63,7 +63,7 @@ const Dialog = ({
             _hover={{ bg: 'brand.300' }}
           >
             <Box mr="10px">
-              <Image src={src} alt={alt} width={20} height={20} />
+              <Image src={src} alt={alt} width={20} height={20} priority />
             </Box>
             {confirmLabel}
           </Button>
