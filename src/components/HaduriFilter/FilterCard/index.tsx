@@ -1,8 +1,12 @@
 import type { SetFilterOptions, TFilterOptions } from '@types';
 import NextImage from 'next/image';
-import { Box, Button, Text } from '@chakra-ui/react';
+import { Box, Button, Text, useDisclosure } from '@chakra-ui/react';
+import Dialog from '@components/common/Dialog';
 import useBreakPoints from '@hooks/useBreakPoints';
+import useShareWithKakao from './hooks/useShareWithKakao';
 import { assetPaths } from '@utils/assets';
+import { KakaoFeedMetaData } from '@utils/kakao';
+import { KakaoShareDialogProps } from '@components/common/Dialog/dialog.utils';
 
 type FilterCard = {
   style: {
@@ -24,7 +28,15 @@ const FilterCard = ({
   onDownload,
 }: FilterCard) => {
   const { isSm } = useBreakPoints();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const onShareWithKakao = useShareWithKakao(KakaoFeedMetaData);
+
   const isFilterSelected = filterOptions.filterStyle === style.filter;
+
+  const downloadImageAndRenderDialog = () => {
+    onDownload();
+    onOpen();
+  };
 
   return (
     <Box
@@ -62,7 +74,7 @@ const FilterCard = ({
           right="8px"
           size={filterOptions.isLargeMode ? 'lg' : 'sm'}
           colorScheme="orange"
-          onClick={onDownload}
+          onClick={downloadImageAndRenderDialog}
         >
           저장하기
         </Button>
@@ -70,6 +82,12 @@ const FilterCard = ({
       <Text mt="2px" textAlign="center">
         {name}
       </Text>
+      <Dialog
+        isOpen={isOpen}
+        onClose={onClose}
+        onConfirm={onShareWithKakao}
+        {...KakaoShareDialogProps}
+      />
     </Box>
   );
 };

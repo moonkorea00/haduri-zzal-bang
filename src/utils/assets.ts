@@ -22,6 +22,7 @@ export const assetPaths = {
     resolution: '/assets/main/select-resolution.webm',
   },
   audio: '/assets/common/icecream.mp3',
+  kakao: '/assets/kakao/kakao.png',
   favicon: '/assets/favicon/haduri.ico',
   appleTouchIcon: '/assets/favicon/haduri.png',
   ogImage: '/assets/haduri-zzal.png',
