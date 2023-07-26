@@ -1,6 +1,7 @@
+import type { ChangeEvent } from 'react';
 import { useRef } from 'react';
 import Image from 'next/image';
-import { Box, Flex, Text, Button } from '@chakra-ui/react';
+import { Box, Flex, Text, Button, Input } from '@chakra-ui/react';
 import useBreakPoints from '@hooks/useBreakPoints';
 import useDragAndDropFile from '@hooks/useDragAndDropFile';
 import { assetPaths } from '@utils/assets';
@@ -18,8 +19,11 @@ const Uploader = ({ setImage }: UploaderProps) => {
     handleDragEnter,
     handleDragLeave,
     handleDrop,
-    handleImageUpload,
-  } = useDragAndDropFile({ setImage });
+  } = useDragAndDropFile(setImage);
+
+  const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
+    setImage((e.target.files as FileList)[0]);
+  };
 
   return (
     <Box
@@ -42,12 +46,14 @@ const Uploader = ({ setImage }: UploaderProps) => {
         onDrop={handleDrop}
         onClick={() => inputRef.current?.click()}
       >
-        <input
+        <Input
+          display="none"
+          w="100%"
+          h="100%"
           type="file"
           accept="image/*"
           ref={inputRef}
           onChange={handleImageUpload}
-          style={{ display: 'none', width: '100%', height: '100%' }}
         />
         <Box p="20px">
           <Image

@@ -1,11 +1,9 @@
-import type { DragEvent, ChangeEvent } from 'react';
+import type { DragEvent } from 'react';
 import { useState } from 'react';
 
-type useDragAndDropFileProps = {
-  setImage: (value: File) => void;
-};
+type FileSetter = (value: File) => void;
 
-const useDragAndDropFile = ({ setImage }: useDragAndDropFileProps) => {
+const useDragAndDropFile = (setFile: FileSetter) => {
   const [isDragging, setIsDragging] = useState(false);
 
   const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
@@ -26,11 +24,7 @@ const useDragAndDropFile = ({ setImage }: useDragAndDropFileProps) => {
   const handleDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     setIsDragging(false);
-    setImage((e.dataTransfer.files as FileList)[0]);
-  };
-
-  const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
-    setImage((e.target.files as FileList)[0]);
+    setFile((e.dataTransfer.files as FileList)[0]);
   };
 
   return {
@@ -39,7 +33,6 @@ const useDragAndDropFile = ({ setImage }: useDragAndDropFileProps) => {
     handleDragEnter,
     handleDragLeave,
     handleDrop,
-    handleImageUpload,
   };
 };
 
