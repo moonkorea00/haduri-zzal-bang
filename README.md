@@ -16,10 +16,10 @@
 
 ## 목차
 
-- [실행 방법](https://github.com/moonkorea00/haduri-zzal-bang#%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)
-- [기술 스택](https://github.com/moonkorea00/haduri-zzal-bang#%EC%84%9C%EB%B9%84%EC%8A%A4-%EB%8F%99%EC%9E%91-%ED%9D%90%EB%A6%84)
-- [Demo](https://github.com/moonkorea00/haduri-zzal-bang#%EC%84%9C%EB%B9%84%EC%8A%A4-%EB%8F%99%EC%9E%91-%ED%9D%90%EB%A6%84)
-- [서비스 동작 흐름](https://github.com/moonkorea00/haduri-zzal-bang#%EC%84%9C%EB%B9%84%EC%8A%A4-%EB%8F%99%EC%9E%91-%ED%9D%90%EB%A6%84)
+- [실행 방법](https://github.com/moonkorea00/haduri-zzal-bang#실행-방법)
+- [기술 스택](https://github.com/moonkorea00/haduri-zzal-bang#기술-스택)
+- [Demo](https://github.com/moonkorea00/haduri-zzal-bang#demo)
+- [서비스 동작 흐름](https://github.com/moonkorea00/haduri-zzal-bang#서비스-동작-흐름)
 
 <br>
 
