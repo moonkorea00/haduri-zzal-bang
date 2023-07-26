@@ -30,41 +30,51 @@ const useImageProcessing = () => {
   }, []);
 
   const onDownload = useCallback(() => {
-    const img = new Image();
-    const watermark = new Image();
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+    try {
+      const img = new Image();
+      const watermark = new Image();
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
-    img.src = URL.createObjectURL(state.compressedImage as Blob);
-    watermark.src = assetPaths.watermark;
+      img.src = URL.createObjectURL(state.compressedImage as Blob);
+      watermark.src = assetPaths.watermark;
 
-    img.onload = () => {
-      canvas.width = img.width;
-      canvas.height = img.height;
+      img.onload = () => {
+        canvas.width = img.width;
+        canvas.height = img.height;
 
-      ctx.filter = state.filterOptions.filterStyle;
-      ctx.drawImage(img, 0, 0, img.width, img.height);
+        ctx.filter = state.filterOptions.filterStyle;
+        ctx.drawImage(img, 0, 0, img.width, img.height);
 
-      if (state.filterOptions.isUseWaterMark) {
-        ctx.filter = 'none';
-        ctx.drawImage(watermark, 0, 0, img.width / 3, img.height / 8);
-      }
+        if (state.filterOptions.isUseWaterMark) {
+          ctx.filter = 'none';
+          ctx.drawImage(watermark, 0, 0, img.width / 3, img.height / 8);
+        }
 
-      canvas.toBlob(
-        blob => {
-          const a = document.createElement('a');
-          const url = URL.createObjectURL(blob as Blob);
+        canvas.toBlob(
+          blob => {
+            const a = document.createElement('a');
+            const url = URL.createObjectURL(blob as Blob);
 
-          a.href = url;
-          a.download = 'haduri-zzal.jpeg';
-          a.click();
+            a.href = url;
+            a.download = 'haduri-zzal.jpeg';
+            a.click();
 
-          URL.revokeObjectURL(url);
-        },
-        'image/jpeg',
-        1
-      );
-    };
+            URL.revokeObjectURL(url);
+          },
+          'image/jpeg',
+          1
+        );
+      };
+    } catch (e) {
+      toast({
+        description: '문제가 발생했습니다. 잠시 후 다시 시도해 주세요.',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     state.compressedImage,
     state.filterOptions.filterStyle,
@@ -116,9 +126,9 @@ const useImageProcessing = () => {
           })
         );
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [compressImage, state.filterOptions.resolution, state.image]);
-  
+
   useEffect(compressAndSetImage, [compressAndSetImage]);
 
   return {
