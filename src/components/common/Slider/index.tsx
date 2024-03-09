@@ -7,13 +7,16 @@ import useBreakPoints from '@hooks/useBreakPoints';
 import { SLIDER_IMG_DATA } from './slider.constants';
 import { slideRight } from './slider.style';
 
+/* 
+calc slider maxWidth = (cardWidth + gap) * numOfCardsInViewPort + pl 
+*/
+
 const Slider = () => {
   const [isSliderRunning, setIsSliderRunning] = useState(true);
   const { isMd } = useBreakPoints();
 
   return (
     <Flex direction="column" maxWidth="850px" overflow="hidden">
-      {/* calc slider maxWidth = (cardWidth + gap) * numOfCardsInViewPort + pl */}
       <Flex justifyContent="space-between" maxWidth={'850'}>
         <Text
           as="span"
@@ -28,13 +31,12 @@ const Slider = () => {
         </Text>
         <Flex alignItems="center" gap="6px">
           <IconButton
-            setState={setIsSliderRunning}
-            icon={BsFillPlayFill}
+            onClickHandler={() => setIsSliderRunning(true)}
             label={'슬라이드쇼 재생'}
+            icon={BsFillPlayFill}
           />
           <IconButton
-            state={false}
-            setState={setIsSliderRunning}
+            onClickHandler={() => setIsSliderRunning(false)}
             label={'슬라이드쇼 일시 중지'}
             icon={BsFillPauseFill}
           />
