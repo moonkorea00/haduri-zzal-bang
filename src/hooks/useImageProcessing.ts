@@ -14,22 +14,22 @@ const useImageProcessing = () => {
     initialImageProcessingState
   );
 
-  const onSetImage = useCallback((file: File) => {
+  const onSetImage = (file: File) => {
     dispatch({ type: ActionTypes.SET_IMAGE, payload: file });
-  }, []);
+  };
 
-  const onSetFilterOptions: SetFilterOptions = useCallback((key, value) => {
+  const onSetFilterOptions: SetFilterOptions = (key, value) => {
     dispatch({
       type: ActionTypes.SET_FILTER_OPTION,
       payload: { [key]: value },
     });
-  }, []);
+  };
 
-  const onReset = useCallback(() => {
+  const onReset = () => {
     dispatch({ type: ActionTypes.RESET });
-  }, []);
+  };
 
-  const onDownload = useCallback(() => {
+  const onDownload = () => {
     try {
       const img = new Image();
       const watermark = new Image();
@@ -74,12 +74,7 @@ const useImageProcessing = () => {
         isClosable: true,
       });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    state.compressedImage,
-    state.filterOptions.filterStyle,
-    state.filterOptions.isUseWaterMark,
-  ]);
+  };
 
   const compressImage = useCallback((image: File, resolution: number) => {
     const img = new Image();
@@ -127,7 +122,7 @@ const useImageProcessing = () => {
         );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [compressImage, state.filterOptions.resolution, state.image]);
+  }, [state.filterOptions.resolution, state.image]);
 
   useEffect(compressAndSetImage, [compressAndSetImage]);
 

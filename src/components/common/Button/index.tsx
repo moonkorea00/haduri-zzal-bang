@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
 import { Button, Icon } from '@chakra-ui/react';
 import { IconType } from 'react-icons';
 
@@ -7,8 +6,7 @@ type IconButtonProps = {
   variant?: string;
   icon: IconType;
   label: string;
-  state?: boolean;
-  setState: Dispatch<SetStateAction<boolean>>;
+  onClickHandler: () => void;
 };
 
 const IconButton = ({
@@ -16,15 +14,14 @@ const IconButton = ({
   variant = 'outline',
   icon,
   label,
-  state = true,
-  setState,
+  onClickHandler,
 }: IconButtonProps) => {
   return (
     <Button
       size={size}
       variant={variant}
       aria-label={label}
-      onClick={() => setState(state)}
+      onClick={onClickHandler}
     >
       <Icon as={icon} />
     </Button>
