@@ -1,5 +1,5 @@
 import { ActionTypes, SetFilterOptions } from '@types';
-import { useReducer, useEffect, useCallback } from 'react';
+import { useReducer, useEffect } from 'react';
 import { useToast } from '@chakra-ui/react';
 import {
   imageProcessingReducer,
@@ -66,7 +66,7 @@ const useImageProcessing = () => {
           1
         );
       };
-    } catch (e) {
+    } catch (_) {
       toast({
         description: '문제가 발생했습니다. 잠시 후 다시 시도해 주세요.',
         status: 'error',
@@ -76,55 +76,51 @@ const useImageProcessing = () => {
     }
   };
 
-  const compressImage = useCallback((image: File, resolution: number) => {
-    const img = new Image();
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+  useEffect(() => {
+    const compressImage = async () => {
+      if (!state.image) return;
+      const img = new Image();
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
-    img.src = URL.createObjectURL(image);
+      img.src = URL.createObjectURL(state.image);
+      try {
+        const blob = await new Promise<Blob>((resolve, reject) => {
+          img.onload = () => {
+            canvas.width = img.width;
+            canvas.height = img.height;
 
-    return new Promise<Blob>((resolve, reject) => {
-      img.onload = () => {
-        canvas.width = img.width;
-        canvas.height = img.height;
+            ctx.drawImage(img, 0, 0, img.width, img.height);
 
-        ctx.drawImage(img, 0, 0, img.width, img.height);
+            canvas.toBlob(
+              blob => {
+                if (blob) {
+                  resolve(blob);
+                  URL.revokeObjectURL(img.src);
+                } else {
+                  reject(new Error('Failed to compress image'));
+                }
+              },
+              'image/jpeg',
+              state.filterOptions.resolution
+            );
+          };
+        });
 
-        canvas.toBlob(
-          blob => {
-            if (blob) {
-              resolve(blob);
-              URL.revokeObjectURL(img.src);
-            } else {
-              reject(new Error('Failed to compress image'));
-            }
-          },
-          'image/jpeg',
-          resolution
-        );
-      };
-    });
-  }, []);
+        dispatch({ type: ActionTypes.COMPRESS_IMAGE, payload: blob });
+      } catch (_) {
+        toast({
+          description: '문제가 발생했습니다. 잠시 후 다시 시도해 주세요.',
+          status: 'error',
+          duration: 3000,
+          isClosable: true,
+        });
+      }
+    };
 
-  const compressAndSetImage = useCallback(() => {
-    if (state.image) {
-      compressImage(state.image, state.filterOptions.resolution)
-        .then(blob =>
-          dispatch({ type: ActionTypes.COMPRESS_IMAGE, payload: blob })
-        )
-        .catch(() =>
-          toast({
-            description: '문제가 발생했습니다. 잠시 후 다시 시도해 주세요.',
-            status: 'error',
-            duration: 3000,
-            isClosable: true,
-          })
-        );
-    }
+    compressImage();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.filterOptions.resolution, state.image]);
-
-  useEffect(compressAndSetImage, [compressAndSetImage]);
+  }, [state.image, state.filterOptions.resolution]);
 
   return {
     state,
